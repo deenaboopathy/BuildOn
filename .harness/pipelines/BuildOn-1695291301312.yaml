@@ -1,0 +1,33 @@
+pipeline:
+  identifier: Build_BuildOn_1695291316783
+  name: Build BuildOn
+  orgIdentifier: default
+  projectIdentifier: buildon
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1695291009490
+        repoName: deenaboopathy/BuildOn
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: echo
+                  name: echo
+                  spec:
+                    command: echo hello world
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI

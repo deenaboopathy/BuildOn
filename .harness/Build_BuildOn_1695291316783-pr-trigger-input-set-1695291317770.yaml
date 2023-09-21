@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_BuildOn_1695291316783-pr-trigger-input-set
+  identifier: Build_BuildOn_1695291316783prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: buildon
+  pipeline:
+    identifier: Build_BuildOn_1695291316783
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

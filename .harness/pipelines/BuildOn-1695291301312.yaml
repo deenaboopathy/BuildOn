@@ -26,6 +26,8 @@ pipeline:
                   spec:
                     connectorRef: account.Github_OAuth_1695291009490
                     repoName: deenaboopathy/BuildOn
+                    cloneDirectory: /harness/
+                    sslVerify: false
                     build:
                       type: branch
                       spec:

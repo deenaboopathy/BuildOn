@@ -20,16 +20,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: maven:latest
-                    shell: Sh
-                    command: |-
-                      cd webapp
-                      mvn clean package -Dskiptests
+                    connectorRef: account.Github_OAuth_1695291009490
+                    repoName: deenaboopathy/BuildOn
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
           platform:
             os: Linux
             arch: Amd64

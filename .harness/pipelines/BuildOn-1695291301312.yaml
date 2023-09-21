@@ -11,23 +11,39 @@ pipeline:
         repoName: deenaboopathy/BuildOn
   stages:
     - stage:
-        identifier: build
-        name: build
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
         spec:
           cloneCodebase: true
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
                   spec:
-                    command: echo hello world
-                  timeout: ""
+                    connectorRef: account.Github_OAuth_1695291009490
+                    repoName: BuildOn
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
+              - step:
                   type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: maven:latest
+                    shell: Sh
+                    command: |-
+                      cd webapp
+                      mvn clean package -Dskiptests
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
+            type: Docker
             spec: {}
-            type: Cloud
-        type: CI
